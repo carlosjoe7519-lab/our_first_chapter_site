@@ -1,0 +1,842 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our First Chapter ❤️</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+    :root {
+      --rose: #b83260;
+      --deep-rose: #802342;
+      --cream: #fffaf6;
+      --text: #513641;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      min-height: 100vh;
+      min-height: 100svh;
+      padding: 80px 22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at top, rgba(255,255,255,.95), transparent 60%),
+        linear-gradient(140deg, #fce8ee, #fff7f0 55%, #f8dce5);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "♡";
+      position: absolute;
+      color: rgba(184,50,96,.12);
+      font-size: clamp(150px, 30vw, 330px);
+      pointer-events: none;
+    }
+
+    .hero::before {
+      top: 2%;
+      left: -7%;
+      transform: rotate(-18deg);
+    }
+
+    .hero::after {
+      right: -8%;
+      bottom: -7%;
+      transform: rotate(18deg);
+    }
+
+    .hero-content {
+      max-width: 850px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      color: var(--rose);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 11px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-family: 'Great Vibes', cursive;
+      color: var(--deep-rose);
+      font-size: clamp(64px, 12vw, 125px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 22px;
+    }
+
+    .hero-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(19px, 4vw, 28px);
+      line-height: 1.7;
+      max-width: 650px;
+      margin: 0 auto 24px;
+    }
+
+    .hero-note {
+      font-size: 13px;
+      color: #956c7b;
+      margin-bottom: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 27px;
+      border-radius: 35px;
+      background: linear-gradient(135deg, var(--rose), #df6b91);
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(184,50,96,.19);
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(184,50,96,.3);
+    }
+
+    .button-outline {
+      background: transparent;
+      color: var(--rose);
+      border: 1px solid #d99aad;
+      box-shadow: none;
+    }
+
+    .section {
+      padding: 90px 22px;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 750px;
+      margin: 0 auto 45px;
+    }
+
+    .section-head .eyebrow {
+      margin-bottom: 14px;
+    }
+
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--deep-rose);
+      font-size: clamp(31px, 5vw, 48px);
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+
+    .section-head p {
+      font-size: 14px;
+      line-height: 1.9;
+      color: #866b76;
+    }
+
+    .story-section,
+    .letter-section {
+      background: white;
+    }
+
+    .story-card {
+      max-width: 820px;
+      margin: auto;
+      padding: clamp(28px, 6vw, 60px);
+      background: #fffaf8;
+      border: 1px solid #f2dfe4;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 14px 50px rgba(110,47,67,.05);
+    }
+
+    .story-heart {
+      font-size: 33px;
+      margin-bottom: 20px;
+    }
+
+    .story-card p {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(17px, 2.5vw, 21px);
+      line-height: 2;
+      margin-bottom: 20px;
+    }
+
+    .story-signature {
+      font-family: 'Great Vibes', cursive;
+      font-size: 38px;
+      color: var(--rose);
+      margin-top: 25px;
+    }
+
+    .gallery-section {
+      background: linear-gradient(180deg, #fff7f5, #fffdfb);
+    }
+
+    .memory-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .memory-card {
+      min-width: 0;
+      padding: 12px 12px 20px;
+      background: white;
+      box-shadow: 0 8px 30px rgba(93,42,60,.1);
+      border: 1px solid #f2e6e8;
+      border-radius: 5px;
+      transform: rotate(var(--tilt, 0deg));
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .memory-card:hover {
+      transform: rotate(0deg) translateY(-6px);
+      box-shadow: 0 16px 35px rgba(93,42,60,.16);
+    }
+
+    .memory-art {
+      width: 100%;
+      height: 280px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f9dfe6, #fff2f4);
+      border-radius: 3px;
+    }
+
+    .memory-photo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform .5s;
+    }
+
+    .memory-card:hover .memory-photo {
+      transform: scale(1.04);
+    }
+
+    /* Keep photos 3, 4 and 5 fully visible. */
+    .memory-photo[src="pics/pics3.jpg"],
+    .memory-photo[src="pics/pics4.jpg"],
+    .memory-photo[src="pics/pics5.jpg"] {
+      object-fit: contain;
+      object-position: center;
+      background-color: #f9e8ed;
+    }
+
+    .memory-caption {
+      text-align: center;
+      padding: 18px 8px 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--deep-rose);
+    }
+
+    .memory-caption small {
+      display: block;
+      margin-top: 7px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: #a88793;
+    }
+
+    .gallery-note {
+      text-align: center;
+      margin-top: 40px;
+      color: #9a7382;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 17px;
+    }
+
+    .letter {
+      max-width: 780px;
+      margin: auto;
+      padding: clamp(28px, 6vw, 60px);
+      background: linear-gradient(145deg, #fff9f4, #fff0f4);
+      border: 1px solid #f0d9e0;
+      box-shadow: 0 10px 40px rgba(120,57,79,.07);
+    }
+
+    .letter h2 {
+      text-align: center;
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(43px, 8vw, 66px);
+      color: var(--deep-rose);
+      font-weight: 400;
+      margin-bottom: 28px;
+    }
+
+    .letter p {
+      font-size: 14px;
+      line-height: 2.1;
+      margin-bottom: 19px;
+    }
+
+    .letter-signature {
+      font-family: 'Great Vibes', cursive;
+      font-size: 38px;
+      color: var(--rose);
+      margin-top: 20px;
+    }
+
+    .download-area {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 28px;
+      border-top: 1px solid #edd5de;
+    }
+
+    .download-area p {
+      color: #8b6d78;
+      font-size: 13px;
+      margin-bottom: 18px;
+      line-height: 1.8;
+    }
+
+    .download-btn {
+      display: inline-block;
+      padding: 16px 28px;
+      background: linear-gradient(135deg, #b83260, #e76f93);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 6px 18px rgba(184,50,96,.25);
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(184,50,96,.35);
+    }
+
+    .closing {
+      padding: 100px 22px;
+      text-align: center;
+      background: linear-gradient(145deg, #f9dfe7, #fff5ed);
+    }
+
+    .closing h2 {
+      font-family: 'Great Vibes', cursive;
+      color: var(--deep-rose);
+      font-size: clamp(50px, 10vw, 85px);
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .closing p {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(17px, 3vw, 22px);
+      line-height: 1.9;
+      max-width: 650px;
+      margin: 0 auto 25px;
+    }
+
+    footer {
+      padding: 28px 15px;
+      text-align: center;
+      background: #fffaf8;
+      color: #987685;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    /* Floating rose petals */
+    .petal {
+      position: fixed;
+      top: -50px;
+      z-index: 20;
+      pointer-events: none;
+      user-select: none;
+      opacity: 0;
+      animation: petal-fall linear forwards;
+      filter: drop-shadow(0 2px 3px rgba(140,36,69,.15));
+    }
+
+    @keyframes petal-fall {
+      0% {
+        transform: translate3d(0,-5vh,0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: .8;
+      }
+      50% {
+        transform: translate3d(45px,50vh,0) rotate(300deg);
+        opacity: .75;
+      }
+      90% {
+        opacity: .65;
+      }
+      100% {
+        transform: translate3d(-35px,110vh,0) rotate(650deg);
+        opacity: 0;
+      }
+    }
+
+    /* Music player */
+    .music-button {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 13px 17px;
+      border: 1px solid rgba(255,255,255,.65);
+      border-radius: 30px;
+      background: rgba(128,35,66,.96);
+      color: white;
+      box-shadow: 0 5px 20px rgba(80,22,42,.25);
+      font: 12px 'Poppins', sans-serif;
+      cursor: pointer;
+    }
+
+    .music-button:hover {
+      background: #a32d54;
+    }
+
+    .music-button:focus-visible,
+    .button:focus-visible,
+    .download-btn:focus-visible {
+      outline: 3px solid #e76f93;
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 850px) {
+      .memory-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .memory-art {
+        height: 250px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .section {
+        padding: 70px 17px;
+      }
+
+      .hero {
+        padding: 80px 18px;
+      }
+
+      .memory-gallery {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        max-width: 390px;
+      }
+
+      .memory-art {
+        height: 340px;
+      }
+
+      .memory-card {
+        transform: none;
+      }
+
+      .music-button {
+        right: 12px;
+        bottom: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .petal {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background music: keep love-song.mp3 beside index.html. -->
+  <audio id="backgroundMusic" loop preload="auto">
+    <source src="./love-song.mp3" type="audio/mpeg">
+    Your browser does not support audio playback.
+  </audio>
+
+  <button
+    class="music-button"
+    id="musicButton"
+    type="button"
+    aria-label="Play background music"
+    aria-pressed="false"
+  >
+    <span id="musicIcon">♫</span>
+    <span id="musicLabel">Play our song</span>
+  </button>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">A little book about us</div>
+      <h1>Our First Chapter</h1>
+
+      <p class="hero-subtitle">
+        Every beautiful story begins somewhere.
+        Mine became special the moment you became part of it. ❤️
+      </p>
+
+      <p class="hero-note">Made with love, for my favourite person.</p>
+      <a href="#story" class="button">Open Our Story ♡</a>
+    </div>
+  </header>
+
+  <!-- Our story -->
+  <section class="section story-section" id="story">
+    <div class="section-head">
+      <div class="eyebrow">Where it all began</div>
+      <h2>The Beginning of Us</h2>
+      <p>
+        Some people arrive quietly and somehow make life feel more beautiful.
+        You became one of those people to me.
+      </p>
+    </div>
+
+    <div class="story-card">
+      <div class="story-heart">💗</div>
+
+      <p>
+        Before us, I never knew that the smallest moments could become
+        the memories I would want to keep forever.
+      </p>
+
+      <p>
+        Every conversation, every laugh, every little thing that makes
+        you who you are has become a part of a story I treasure.
+      </p>
+
+      <p>
+        This is our first chapter. We may not know every page that comes
+        next, but I hope we keep filling them with kindness, honesty,
+        laughter, patience and love.
+      </p>
+
+      <p>
+        If I could keep one thing from all these moments, it would be
+        the happiness of having you in my life.
+      </p>
+
+      <div class="story-signature">With all my heart ♡</div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section gallery-section" id="gallery">
+    <div class="section-head">
+      <div class="eyebrow">Little moments, a lifetime of meaning</div>
+      <h2>Our Memory Gallery</h2>
+      <p>
+        Six special moments, framed just for our first chapter.
+        Every picture holds a little piece of our story.
+      </p>
+    </div>
+
+    <div class="memory-gallery">
+      <article class="memory-card" style="--tilt:-2deg">
+        <div class="memory-art">
+          <img class="memory-photo" src="pics/pics1.jpg"
+               alt="Our first memory together" loading="lazy">
+        </div>
+        <div class="memory-caption">
+          The Beginning of Us
+          <small>OUR FIRST CHAPTER</small>
+        </div>
+      </article>
+
+      <article class="memory-card" style="--tilt:1.5deg">
+        <div class="memory-art">
+          <img class="memory-photo" src="pics/pics2.jpg"
+               alt="A beautiful memory together" loading="lazy">
+        </div>
+        <div class="memory-caption">
+          A Moment to Keep
+          <small>A LITTLE PIECE OF HAPPINESS</small>
+        </div>
+      </article>
+
+      <article class="memory-card" style="--tilt:-1deg">
+        <div class="memory-art">
+          <img class="memory-photo" src="pics/pics3.jpg"
+               alt="Another special memory" loading="lazy">
+        </div>
+        <div class="memory-caption">
+          Just You and Me
+          <small>ONE OF MY FAVOURITES</small>
+        </div>
+      </article>
+
+      <article class="memory-card" style="--tilt:2deg">
+        <div class="memory-art">
+          <img class="memory-photo" src="pics/pics4.jpg"
+               alt="A treasured moment" loading="lazy">
+        </div>
+        <div class="memory-caption">
+          A Memory Forever
+          <small>KEPT CLOSE TO MY HEART</small>
+        </div>
+      </article>
+
+      <article class="memory-card" style="--tilt:-1.5deg">
+        <div class="memory-art">
+          <img class="memory-photo" src="pics/pics5.jpg"
+               alt="A special moment in our story" loading="lazy">
+        </div>
+        <div class="memory-caption">
+          My Favourite Person
+          <small>A BEAUTIFUL PART OF US</small>
+        </div>
+      </article>
+
+      <article class="memory-card" style="--tilt:1deg">
+        <div class="memory-art">
+          <img class="memory-photo" src="pics/pics6.jpg"
+               alt="A memory to cherish" loading="lazy">
+        </div>
+        <div class="memory-caption">
+          To More Memories
+          <small>THIS IS ONLY THE BEGINNING</small>
+        </div>
+      </article>
+    </div>
+
+    <p class="gallery-note">
+      Six memories, one beautiful beginning. 🌹
+    </p>
+  </section>
+
+  <!-- Love letter -->
+  <section class="section letter-section" id="letter">
+    <div class="section-head">
+      <div class="eyebrow">A few words from my heart</div>
+      <h2>A Letter for You</h2>
+      <p>
+        Some things are easier to feel than to say, but you deserve
+        to know how much you mean to me.
+      </p>
+    </div>
+
+    <div class="letter">
+      <h2>My Love,</h2>
+
+      <p>
+        I wanted to create something special for you, something that
+        could hold even a little of what I feel when I think about us.
+      </p>
+
+      <p>
+        You have become someone so precious to me. It is in the little
+        things, the conversations, the laughter, the way a simple moment
+        can become something I remember long after it has passed.
+      </p>
+
+      <p>
+        I cannot promise that every day will be perfect, but I can promise
+        that what I share with you comes from my heart. I want us to keep
+        learning about each other, growing together and choosing kindness
+        even when life gets difficult.
+      </p>
+
+      <p>
+        Whatever the next chapters hold, I am grateful that our paths
+        crossed. You are a beautiful part of my story, and I hope this
+        little gift reminds you that you are loved and appreciated.
+      </p>
+
+      <p>
+        If I could give you one thing, it would be the ability to see
+        yourself through my eyes, even for a moment. Maybe then you would
+        understand just how special you are to me.
+      </p>
+
+      <p>
+        Thank you for being you, for the memories we have made, and for
+        the beautiful possibility of all the moments still ahead of us.
+      </p>
+
+      <p>
+        This is our first chapter, my love. I hope it is the beginning
+        of a story filled with beautiful pages.
+      </p>
+
+      <div class="letter-signature">Forever cheering for us, ❤️</div>
+
+      <div class="download-area">
+        <p>
+          I made a little love book for you, too.<br>
+          Keep it close and revisit our story whenever you miss me.
+        </p>
+
+        <a
+          class="download-btn"
+          href="./our_first_chapter_love_book.pdf"
+          download="Our_First_Chapter_Love_Book.pdf"
+        >
+          📖 Download Our Love Book
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing -->
+  <section class="closing">
+    <h2>To Be Continued...</h2>
+
+    <p>
+      This is not the end of our story. It is simply the beginning
+      of all the beautiful memories we have yet to make. 💗
+    </p>
+
+    <a href="#story" class="button button-outline">
+      Read Our Story Again ♡
+    </a>
+  </section>
+
+  <footer>
+    MADE WITH LOVE · OUR FIRST CHAPTER · ❤️
+  </footer>
+
+  <script>
+    // Background music
+    const music = document.getElementById("backgroundMusic");
+    const musicButton = document.getElementById("musicButton");
+    const musicIcon = document.getElementById("musicIcon");
+    const musicLabel = document.getElementById("musicLabel");
+
+    music.volume = 0.7;
+
+    function updateMusicButton() {
+      const playing = !music.paused;
+
+      musicIcon.textContent = playing ? "❚❚" : "♫";
+      musicLabel.textContent = playing
+        ? "Pause our song"
+        : "Play our song";
+
+      musicButton.setAttribute(
+        "aria-label",
+        playing ? "Pause background music" : "Play background music"
+      );
+
+      musicButton.setAttribute("aria-pressed", String(playing));
+    }
+
+    musicButton.addEventListener("click", async () => {
+      try {
+        if (music.paused) {
+          await music.play();
+        } else {
+          music.pause();
+        }
+      } catch (error) {
+        console.error("Music playback failed:", error);
+        musicLabel.textContent = "Check song file";
+      }
+
+      updateMusicButton();
+    });
+
+    music.addEventListener("play", updateMusicButton);
+    music.addEventListener("pause", updateMusicButton);
+
+    music.addEventListener("error", () => {
+      console.error("Audio could not load.", music.error);
+      musicLabel.textContent = "Song file not found";
+    });
+
+    music.addEventListener("canplay", () => {
+      console.log("Music file loaded and ready.");
+    });
+
+    // Attempt autoplay when the page loads.
+    // Chrome may block playback until the visitor clicks.
+    window.addEventListener("load", async () => {
+      try {
+        await music.play();
+        updateMusicButton();
+      } catch (error) {
+        console.log(
+          "Autoplay was blocked. Click Play our song.",
+          error.name
+        );
+        updateMusicButton();
+      }
+    });
+
+    // Continuously falling rose petals
+    const petalSymbols = ["🌹", "🌸", "🌷", "💗"];
+
+    function createPetal() {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+      }
+
+      const petal = document.createElement("span");
+      petal.className = "petal";
+
+      petal.textContent =
+        petalSymbols[Math.floor(Math.random() * petalSymbols.length)];
+
+      petal.style.left = Math.random() * 100 + "vw";
+      petal.style.fontSize = (12 + Math.random() * 15) + "px";
+      petal.style.animationDuration = (7 + Math.random() * 8) + "s";
+
+      document.body.appendChild(petal);
+
+      setTimeout(() => petal.remove(), 17000);
+    }
+
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      for (let i = 0; i < 12; i++) {
+        setTimeout(createPetal, i * 450);
+      }
+
+      setInterval(createPetal, 550);
+    }
+  </script>
+
+</body>
+</html>
